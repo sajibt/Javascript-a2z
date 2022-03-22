@@ -84,3 +84,55 @@ console.log(`Hello, ${name}!`); // Hello, John!
 // embed an expression
 console.log(`the result is ${1 + 2}`); // the result is 3
 console.log("the result is ${1 + 2}"); // the result is ${1 + 2} (double quotes do nothing)
+
+// Boolean (logical type):The boolean type has only two values: true and false.
+
+let nameFieldChecked = true; // yes, name field is checked
+let ageFieldChecked = false; // no, age field is not checked
+console.log(nameFieldChecked)
+console.log(ageFieldChecked)
+// Boolean values also come as a result of comparisons
+
+let isGreater = 4 > 1;
+
+console.log(isGreater); // true (the comparison result is "yes")
+// The “null” value:The special null value does not belong to any of the types described above.
+let age = null;
+console.log(age)
+// The “undefined” value
+// The special value undefined also stands apart. It makes a type of its own, just like null.
+
+// The meaning of undefined is “value is not assigned”.
+
+// If a variable is declared, but not assigned, then its value is undefined:
+
+let age2;
+
+console.log(age2); // shows "undefined"
+// Technically, it is possible to explicitly assign undefined to a variable:
+
+let age3 = 100;
+
+// change the value to undefined
+age3 = undefined;
+
+console.log(age3); // "undefined"
+
+// The typeof operator:The typeof operator returns the type of the argument. It’s useful when we want to process values of different types differently or just want to do a quick check. A call to typeof x returns a string with the type name:
+typeof undefined // "undefined"
+
+typeof 0 // "number"
+
+typeof 10n // "bigint"
+
+typeof true // "boolean"
+
+typeof "foo" // "string"
+
+typeof Symbol("id") // "symbol"
+
+typeof Math // "object"  (1)
+
+typeof null // "object"  (2)
+
+typeof alert // "function"  (3)
