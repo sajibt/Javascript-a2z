@@ -43,3 +43,44 @@ console.log(color); // #FF7F00
 // const – is like let, but the value of the variable can’t be changed.
 
 // 2. Data types
+// Number:The number type represents both integer and floating point numbers.
+
+let n = 143
+n = 100.669
+console.log(n) //number 
+let infinity = 1 / 0
+console.log(infinity)
+
+console.log(NaN + 1); // NaN
+console.log(3 * NaN); // NaN
+console.log("not a number" / 2 - 1); // NaN
+
+// BigInt: In JavaScript, the “number” type cannot represent integer values larger than (253-1) (that’s 9007199254740991), or less than -(253-1) for negatives. It’s a technical limitation caused by their internal representation.
+// the "n" at the end means it's a BigInt data types
+const bigInt = 1234567890123456789012345678901234567890n;
+console.log(bigInt)
+
+
+// String: A string in JavaScript must be surrounded by quotes.
+
+let str = "Hello";
+let str2 = 'Single quotes are ok too';
+let phrase = `can embed another ${str}`;
+console.log(phrase)
+// In JavaScript, there are 3 types of quotes.
+
+// Double quotes: "Hello".
+// Single quotes: 'Hello'.
+// Backticks: `Hello`.
+// Double and single quotes are “simple” quotes. There’s practically no difference between them in JavaScript.
+
+// Backticks are “extended functionality” quotes. They allow us to embed variables and expressions into a string by wrapping them in ${…}, for example:
+
+let name = "John";
+
+// embed a variable
+console.log(`Hello, ${name}!`); // Hello, John!
+
+// embed an expression
+console.log(`the result is ${1 + 2}`); // the result is 3
+console.log("the result is ${1 + 2}"); // the result is ${1 + 2} (double quotes do nothing)
