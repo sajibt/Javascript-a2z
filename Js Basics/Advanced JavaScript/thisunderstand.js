@@ -1,3 +1,5 @@
+// "use strict"
+// this script works the modern way
 // function sayName(name) {
 //     console.log(`My name is ${name}`)
 // }
@@ -52,3 +54,4 @@ Person.prototype.getFullName = function () {
 }
 console.log(person1.getFullName()) //output bruce Mayne
 console.log(person2.getFullName()) //output Clark kent
+
