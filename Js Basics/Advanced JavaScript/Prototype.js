@@ -24,3 +24,9 @@ let object2 = {
 }
 // object2 is Inheriting the properties of object like arr.push arr.map etc 
 object2.__proto__ = object // now object2 has the  properties  and method it's called the Prototype and Prototypal Inheritance  
+Function.prototype.makeBind = function () {
+    console.log(" this is prototype inheritance. you can acces it from any function. ")
+}
+function fun() {
+// fun.__proto__ has the access  of makeBind Methods  all properties like fun.makeBind()
+}
