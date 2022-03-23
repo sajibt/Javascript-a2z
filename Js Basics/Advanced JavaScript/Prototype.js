@@ -81,45 +81,107 @@ ObjMaker.prototype.b = 'second';
 //     console.log("hello " + this.new() + ".")
 // }
 
-function User(email, name) {
-    this.email = email;
-    this.name = name;
-    this.online = false;
-  }
-  
-  User.prototype.login = function () {
-    this.online = true;
-    console.log(`${this.email} has logged in.`);
-  };
-  User.prototype.logout = function () {
-    this.online = false;
-    console.log(`${this.email} has logged out.`);
-  };
-  
-  function Admin(...args) {
-    // We don't inherit function with apply. we only inherit properties
-    User.apply(this, args);
-    this.role = "super admin";
-  }
-  
-  // Prototype Inheritance
-  // Admin's Proto points to User's prototype
-  Admin.prototype = Object.create(User.prototype);
-  Admin.prototype.deleteUser = function () {
-    console.log(`User has been deleted!`);
-  };
-  
-  // TEST
-  let userOne = new User("andy@n.com", "Andy");
-  let userTwo = new User("james@n.com", "James");
-  
-  let admin = new Admin("admin@n.com", "Admin");
-  
-  console.log(userOne);
-  userTwo.login();
-  console.log(userTwo);
-  
-  admin.login();
-  console.log(admin);
+// function User(email, name) {
+//     this.email = email;
+//     this.name = name;
+//     this.online = false;
+//   }
+
+//   User.prototype.login = function () {
+//     this.online = true;
+//     console.log(`${this.email} has logged in.`);
+//   };
+//   User.prototype.logout = function () {
+//     this.online = false;
+//     console.log(`${this.email} has logged out.`);
+//   };
+
+//   function Admin(...args) {
+//     // We don't inherit function with apply. we only inherit properties
+//     User.apply(this, args);
+//     this.role = "super admin";
+//   }
+
+//   // Prototype Inheritance
+//   // Admin's Proto points to User's prototype
+//   Admin.prototype = Object.create(User.prototype);
+//   Admin.prototype.deleteUser = function () {
+//     console.log(`User has been deleted!`);
+//   };
+
+//   // TEST
+//   let userOne = new User("andy@n.com", "Andy");
+//   let userTwo = new User("james@n.com", "James");
+
+//   let admin = new Admin("admin@n.com", "Admin");
+
+//   console.log(userOne);
+//   userTwo.login();
+//   console.log(userTwo);
+
+//   admin.login();
+//   console.log(admin);
 
 
+
+
+// 3 way to create js object 
+//   const tiger = {
+//     name: 'tiger'
+//   }; 
+//   const Cat = function (name) {
+//     this.name = name;
+//   }
+//   const cat = new Cat('cat'); //Cat is the function name and cat is a constructor 
+// console.log(cat.constructor === Cat); //true
+// console.log(cat.hasOwnProperty('constructor')); //fasle
+// console.log(Cat.prototype);
+// console.log(Cat.prototype.constructor === Cat); // true
+// console.log(cat.__proto__ === Cat.prototype); //true
+//   const ek = Object.create(Object.prototype, { name: {value: 'ek'}}); // Object.create(proto[, propertiesObject])
+
+//   const Person = function (name) {
+//     this.name = name;
+//   }
+
+//   Person.prototype.hello = function () {
+//     console.log(`Hello! I'm ${this.name}!`);
+//   }
+
+//   const sajib = new Person('Sajib');
+//   sajib.hello();
+
+//   const Master = function (name, subject) {
+//     Person.call(this, name);
+//     this.subject = subject;
+//   }
+
+//   Master.prototype = Object.create(Person.prototype);
+//   Master.prototype.hello = function () {
+//     console.log(`Hello! I'm ${this.subject} master ${this.name}`);
+//   }
+
+//   const master = new Master('NIce to see you!', 'frontend');
+//   master.hello();
+
+
+/* jshint esnext: true */
+// Nullish Coalescing Operator
+// operando1 ?? operando2
+// operando1 || operando2
+
+// var Car = function (maxSpeed) {
+//     this.maxSpeed = maxSpeed
+// };
+
+// Car.prototype.setMaxSpeed = function (newSpeed) {
+//     this.maxSpeed = newSpeed;
+// };
+
+// Car.prototype.getSpeed = function () {
+//     console.log("Car class initilized and speed is " + this.maxSpeed)
+// };
+
+// var renault = new Car(200);
+// renault.setMaxSpeed(150);
+// renault.getSpeed();
