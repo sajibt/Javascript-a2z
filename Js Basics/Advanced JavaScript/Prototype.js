@@ -185,3 +185,264 @@ ObjMaker.prototype.b = 'second';
 // var renault = new Car(200);
 // renault.setMaxSpeed(150);
 // renault.getSpeed();
+
+var parentController = {
+    number: 1,
+    objects: [1, 2, 3]
+};
+
+var myController = {
+};
+
+var sideMenuController = {
+};
+//sideMenuController has the prototype parentController
+//myController has the prototype parentController
+sideMenuController.__proto__ = parentController;
+myController.__proto__ = parentController;
+
+// console.log(myController.objects);//1, 2, 3
+// console.log(sideMenuController.objects);//1, 2, 3
+// console.log(parentController.objects);//1, 2, 3
+
+myController.objects.push(4);
+
+// console.log(myController.objects);//1, 2, 3, 4
+// console.log(sideMenuController.objects);//1, 2, 3, 4
+// console.log(parentController.objects);//1, 2, 3, 4
+
+//If we replace the property, it's available only locally
+myController.objects = [5, 6, 7];
+
+// console.log(myController.objects);//5,6,7
+// console.log(sideMenuController.objects);//1, 2, 3, 4
+// console.log(parentController.objects);//1, 2, 3, 4
+
+
+// Value are only shared in reading, after setting they are creating locally
+// console.log(sideMenuController.number);//1
+// console.log(myController.number);//1
+// console.log(parentController.number);//1
+
+sideMenuController.number = 2;
+
+// console.log(sideMenuController.number);//2
+// console.log(myController.number);//1
+// console.log(parentController.number);//1
+
+parentController.number = 3;
+
+// Property is created locally, object doesn't lookup to is prototype
+// console.log(sideMenuController.number);//2
+// console.log(myController.number);//3
+// console.log(parentController.number);//3
+
+//In a nutshell, object looks in himself for property, if it doesn't find the property it looks in his prototype. 
+//When modifying object(hash, array) accessed by a prototype the content is not created in the object, it's modify within a prototype
+
+
+// var Myno = {
+//     name: "sajib",
+//     number: [1, 2, 3, 4]
+// }
+
+// function mysecno(){
+
+// }
+
+// var mylast = {
+
+// }
+// mysecno.__proto__ = Myno
+
+// function Myconstractor(){}
+// var myobj = new Myconstractor();
+// myobj.constractor == Myconstractor;
+
+// function Myconstractor2(){}
+// Myconstractor2.prototype = {};
+// var myobj2 = new Myconstractor2();
+// myobj2.constractor == Myconstractor2;
+
+
+//MDN 
+// Prototypes  are hee mechanism by which JavaScript objects inherit features from one another. 
+const myObject = {
+    city: 'Madrid',
+    greet() {
+        console.log(`Greetings from ${this.city}`);
+    }
+}
+
+// myObject.greet(); // Greetings from Madrid
+Object.getPrototypeOf(myObject);
+// Every object in JavaScript has a built-in property, which is called its
+//  prototype. The prototype is itself an object, so the prototype will have its
+//   own prototype, making what's called a prototype chain. The chain ends when we
+//   reach a prototype that has null for its own prototype.
+
+// const myDate = new Date();
+// let object = myDate;
+
+// do {
+//   object = Object.getPrototypeOf(object);
+//   console.log(object);
+// } while (object);
+// Date.prototype
+// Object {...}
+// null
+// const personPrototype = {
+//     greet() {
+//         console.log(`hello, my name is ${this.name}!`);
+//     }
+// }
+
+// function Person(name) {
+//     this.name = name;
+// }
+
+// function empt(sajib) {
+//     this.name = sajib;
+
+// }// every function have prototype object which had own constructor  
+
+// function empt1(){
+
+// }
+
+// Person.prototype = personPrototype;
+
+// Person.prototype.constructor = Person;
+
+// // empt.prototype = personPrototype
+// // empt.prototype.constructor = empt;
+// const reuben = new Person('Reuben');
+// reuben.greet(); // hello, my name is Reuben!
+
+// const reuben2 = new empt('sajib');
+// // reuben2.greet(); // hello, my name is Reuben!
+
+// var Pen = {
+//     penIdentify() {
+//         console.log(` this pen Color is ${this.name}`)
+//     }
+
+// }
+// function penColor(name) {
+//     this.name = name;
+
+// }
+// penColor.prototype = Pen
+
+
+// const myPen = new penColor("Red")
+// myPen.penIdentify()
+// let myPen2 = new penColor("Blue")
+// myPen2.penIdentify()
+
+// function Person(name, age) {
+//     this.name = name;
+//     this.age = age;
+
+// }
+// Person.prototype.geName = function () {
+//     return this.name
+// }
+// Person.prototype.getAge = function () {
+//     return this.age
+// }
+// Person.prototype.Ename = function () {
+//     console.log(`this person name is ${this.name}. and ${this.age}`)
+// }
+
+// let person = new Person("sajib",28)
+// person.Ename()
+// person.geName(console.log("sajib"))
+
+//Via prototype property 
+var Employee = function(Fname, Lname, DOB, Desig) {
+    this.Fname = Fname;
+    this.Lname = Lname;
+    this.DOB = DOB;
+    this.Desig = Desig;
+}
+
+//Attaching method to above constructor via prototype property
+Employee.prototype.calcAge = function() {
+        var today = new Date();
+        var year = today.getFullYear();
+        var age = year - this.DOB;
+        // console.log(age);
+    }
+    //Creating new object via above ctor
+
+var Tom = new Employee('Tom', 'Allen', '1983', 'Developer');
+
+Tom.calcAge();
+
+//Protoypes Explained
+
+//Object.prototype
+//Person.prototype
+//Person Constructor 
+//Person Constructor 
+// function Person(firstName, lastName, dob){
+//     this.firstName = firstName; 
+//     this.lastName = lastName;
+//     this.birthday = new Date(dob); 
+//     // this.calculateAge = function(){
+//     //   const diff = Date.now() - this.birthday.getTime();
+//     //   const ageDate =  new Date(diff);
+//     //   return Math.abs(ageDate.getUTCFullYear() - 1970);
+//     // }
+//   }
+
+//   const john = new Person('John', 'Doe', '8-12-90');
+//   const mary = new Person('Mary', 'Johnson', 'March 20 1978');
+
+//   //Calculate age
+//   Person.prototype.calculateAge = function(){
+//     const diff = Date.now() - this.birthday.getTime();
+//     const ageDate =  new Date(diff);
+//     return Math.abs(ageDate.getUTCFullYear() - 1970);
+//   }
+
+//   //Get full name
+//   Person.prototype.getFullName= function(){
+//     return `${this.firstName} ${this.lastName}` ;
+//   }
+
+//   //Gets married
+//   Person.prototype.getsMarried = function(newLastName){
+//     this.lastName = newLastName;
+//   }
+
+
+//   console.log(mary);
+//   console.log(john.calculateAge());
+//   console.log(mary.getFullName());
+
+//   mary.getsMarried('Smith');
+//   console.log(mary.getFullName());
+
+//   console.log(mary.hasOwnProperty('firstName'));
+//   console.log(mary.hasOwnProperty('getFullName'));
+const personprototype = {
+    eat() {
+        console.log(  ` My name is ${this.name}.i am   ${this.age}` )
+    },
+    walk() {
+        console.log(` Person is eating`)
+    },
+    sleep() {
+        console.log(` Person is eating`)
+    }
+}
+
+function Person(name, age) {
+    this.name = name
+    this.age = age
+}
+Person.prototype = personprototype
+let person = new Person("sajib", 28)
+// person.eat()
