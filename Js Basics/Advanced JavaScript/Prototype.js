@@ -360,25 +360,27 @@ Object.getPrototypeOf(myObject);
 // person.geName(console.log("sajib"))
 
 //Via prototype property 
-var Employee = function(Fname, Lname, DOB, Desig) {
-    this.Fname = Fname;
-    this.Lname = Lname;
-    this.DOB = DOB;
-    this.Desig = Desig;
-}
+// let Linkedin = function (FirstName, SurName, DOB, Profession) {
+//     this.FirstName = FirstName;
+//     this.SurName = SurName;
+//     this.DOB = DOB;
+//     this.Profession = Profession;
+// }
 
-//Attaching method to above constructor via prototype property
-Employee.prototype.calcAge = function() {
-        var today = new Date();
-        var year = today.getFullYear();
-        var age = year - this.DOB;
-        // console.log(age);
-    }
-    //Creating new object via above ctor
+// //Attaching method to above constructor via prototype property
+// Linkedin.prototype.MyDetails = function () {
+//     var today = new Date();
+//     var year = today.getFullYear();
+//     var age = year - this.DOB;
+//     console.log(`My name is ${this.FirstName} ${this.SurName}.I am ${age} years old.Still looking for a ${this.Profession} Job.! Thank you. `);
 
-var Tom = new Employee('Tom', 'Allen', '1983', 'Developer');
+// }
 
-Tom.calcAge();
+// //Creating new object via above ctor
+
+// const womsajib = new Linkedin('Sajib', 'Talukder', '1994', 'Full stack JavaScript Developer');
+
+// womsajib.MyDetails();
 
 //Protoypes Explained
 
@@ -429,7 +431,7 @@ Tom.calcAge();
 //   console.log(mary.hasOwnProperty('getFullName'));
 const personprototype = {
     eat() {
-        console.log(  ` My name is ${this.name}.i am   ${this.age}` )
+        console.log(` My name is ${this.name}.i am   ${this.age}`)
     },
     walk() {
         console.log(` Person is eating`)
@@ -445,4 +447,4 @@ function Person(name, age) {
 }
 Person.prototype = personprototype
 let person = new Person("sajib", 28)
-// person.eat()
+//person.eat()
