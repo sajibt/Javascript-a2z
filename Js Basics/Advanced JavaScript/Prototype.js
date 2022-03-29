@@ -448,3 +448,63 @@ function Person(name, age) {
 Person.prototype = personprototype
 let person = new Person("sajib", 28)
 //person.eat()
+
+var twoSum = function (nums, target) {
+    const hashMap = {}
+    for (let i = 0; i < nums.length; i++) {
+        let previousNum = target - nums[i]
+        if (previousNum in hashMap) {
+            return [hashMap[previousNum], i]
+        } hashMap[nums[i]] = i;
+
+    }
+
+}
+num1 = [1, 3, 4, 2] //compliment of 5,3,2,4
+target = 6;
+// console.log(twoSum(num1, target)) // output 2,3 
+
+// const yourRoll = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         resolve([10, 11, 12, 13, 14])
+//     }, 1000)
+// })
+
+// const studentDetails = (yourRoll) => {
+//     return new Promise((resolve, reject) => {
+//         setTimeout((id) => {
+//             const stuDEtails = { name: "sajib", marks: 200 }
+//             resolve(`${id}: ${stuDEtails.name} ${stuDEtails.marks}`)
+//         }, 1000, yourRoll)
+//     })
+// }
+// const subject = (marks) => {
+//     return new Promise((resolve, reject) => {
+//         setTimeout((marks) => {
+//             if (marks > 200) {
+//                 resolve("Take science")
+//             } else { console.log("take commerce") }
+//         }, 1000, marks)
+//   })
+// }
+
+// yourRoll.then(yourRoll => {
+//     console.log(yourRoll)
+//     return studentDetails(yourRoll[2])
+// }).then(details => {
+//     console.log(details)
+//     return subject(400)   // this  is called  promisee chaining . returning function as a stack . 
+// }).then(subcheck => {
+//     console.log(subcheck)
+// })
+//     // the return value in the first then() method is passed to the second then() method. You can keep calling the then() method successively as follows:
+//     .catch(error => {
+//         console.error("There is a big Error!");
+//     });
+// //   Promise.then() takes two arguments, a callback for success and another for failure.
+
+// // Both are optional, so you can add a callback for success or failure only
+
+
+//Asycn and await 
+

@@ -97,7 +97,7 @@ console.log(result2)
 
 // inctraction block is just the main working blog . input is (array[1])
 
-function copyArrayManipulate(array, instructions){
+function copyArrayManipulate(array, instructions){ //the outer function that take in/out a function is called higher order function 
     const output = []
     for (let i = 0; i<array.length; i++){
         output.push(instructions(array[i])) // array value through throw into instruction like ins(2). instruction in multyplyby2(2)
@@ -105,11 +105,11 @@ function copyArrayManipulate(array, instructions){
     return output
 }
 // instruction(3) => multiBy2(3)
-function multiBy2(input){
+function multiBy2(input){ // this is  a callback function cz we called it from higher order function .
     return input*2
    
 }
-function DivisionBy2(input){
+function DivisionBy2(input){ //the function we insert is called callback functions 
     return input/2
    
 }
@@ -117,7 +117,9 @@ const aresult = copyArrayManipulate([1,2,3],multiBy2)
 const aresult2 = copyArrayManipulate([1,2,3],DivisionBy2)
 console.log(aresult)
 console.log(aresult2)
-// javascript function are first class objects 
+// javascript function are first class objects .First class means everything objects have they have too. 
+// when functions stored to properties of other objects is called method .
+
 
 
 
